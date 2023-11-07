@@ -1,0 +1,102 @@
+#!/bin/bash
+####nc sims dt faci
+./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S1
+sleep 15
+./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S2
+sleep 15
+./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S3
+sleep 15
+./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S4
+sleep 15
+./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S5
+sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S6
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S7
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S8
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S9
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S10
+#sleep 15
+#./ScriptMid 2 5 0.5 0.15 $RANDOM nc2dtp5fp05S11
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S12
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S13
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S14
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S15
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S16
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S17
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S18
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S19
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S20
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S21
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S22
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S23
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S24
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S25
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S26
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S27
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S28
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S29
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S30
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S31
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S32
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S33
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S34
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S35
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S36
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S37
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S38
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S39
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S40
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S41
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S42
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S43
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S44
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S45
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S46
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S47
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S48
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S49
+#sleep 15
+#./ScriptMid 2 1 0.5 0.15 $RANDOM nc2dtp5fp05S50
+#sleep 15

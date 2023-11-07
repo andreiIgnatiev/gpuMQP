@@ -1,0 +1,140 @@
+#!/usr/bin/python
+import os
+import os.path
+import sys
+import optparse
+
+formatter = optparse.IndentedHelpFormatter(max_help_position=40)
+parser = optparse.OptionParser(formatter=formatter)
+parser.set_defaults(project="Matlab")
+
+def main():
+    global parser
+    global options
+    
+    addOptions(parser)
+
+    #script = str("./" + options.direc + "/" + options.direc + ".py")
+    script = str("./" + options.direc + ".py")
+
+    buildScript()
+
+    sbatch_args = 'sbatch %s' % (script)
+
+    print "Submitting Matlab job for project %s on %s nodes for %s hours..." % (options.project,options.nodes,options.time)
+    print sbatch_args
+
+    os.system(sbatch_args)
+
+    sys.exit(0)
+
+
+def addOptions(parser):
+    global options
+
+    # parser.add_option("-i", "--input", dest="inpF", action="store",
+    #                   help="Input file (INPUT.m)")
+
+    parser.add_option("-l", "--logfile", dest="logF", action="store", default="None",
+                      help="Log file")
+    parser.add_option("-d", "--dir", type="str", dest="direc", action="store",
+                      help="Job output directory")
+    parser.add_option("-p", "--partition", dest="part", action="store",
+                      help="Partition (queue) for resource request")
+    parser.add_option("-E", "--error", dest="err", action="store", default="None",
+                      help="Error file")
+    parser.add_option("-t", "--walltime",dest="time", action="store", 
+                      help="Job run time (HOURS:MINUTES)", default="12:00")
+    parser.add_option("-m", "--memory", type="int", dest="mem", action="store",
+                      help="Memory for Abaqus scratch files (in GB)", default=40)
+    parser.add_option("-N", "--nodes", type="int", dest="nodes", action="store",
+                      help="Number of nodes", default=1)
+    parser.add_option("-C", "--constraint", dest="const", action="store", default="None",
+                      help="Hardware constraint (Slurm Feature)")
+    parser.add_option("-n", "--ntasks-per-node", type="int", dest="ntasks", action="store",
+                      help="Number of tasks per node", default=1)
+    parser.add_option("-g", "--gpus-per-node", type="int", dest="ngpus", action="store",
+                      help="Number of GPUs per node", default=0)
+    parser.add_option("-P", "--params", type="str", dest="params", action="store",
+                      help="Parameters")
+
+
+    (options, args) = parser.parse_args()
+
+    # if not options.inpF:
+    #     parser.error("Input file must be specified")
+    #     sys.exit(1)
+
+    # if not os.path.isfile(options.inpF):
+    #     parser.error("Your input file doesn't exist")
+    #     sys.exit(1)
+
+    if not options.part:
+        options.part = 'compute'
+
+        
+def buildScript():
+    global options
+
+    mkdir_job = "mkdir %s" % (options.direc)
+    #os.system(mkdir_job)
+    
+    #job = options.direc + "/" +  options.direc
+    job = options.direc #+ "/" +  options.direc
+
+    runsdo = str(job + ".py")
+    runsdo = open(runsdo,'w') 
+
+    script = ""    
+    script += "#!/usr/bin/env python \n"
+    script += "#SBATCH -p %s \n" % (options.part)
+    script += "#SBATCH -N %s \n" % (options.nodes)
+    if options.logF != "None":
+        script += "#SBATCH -o %s \n" % (options.logF)
+    if options.err != "None":
+        script += "#SBATCH -e %s \n" % (options.err)
+    if options.const != "None":
+        script += "#SBATCH -C %s \n" % (options.const)
+    script += "#SBATCH --mem %sG \n" % (options.mem)
+    script += "#SBATCH --time=%s:00 \n" % (options.time)
+    script += "#SBATCH --ntasks-per-node=%s \n" % (options.ntasks)
+    script += "#SBATCH --gres=gpu:%s \n" % (options.ngpus)
+    script += "import os \n"
+    script += "import sys \n"
+    script += "import time \n"
+    script += "import itertools \n"
+    script += "import subprocess \n"
+    script += "from subprocess import call \n"
+    script += "from Queue import Queue \n"
+    script += "from threading import Thread \n"
+
+    script += "def main(): \n"
+    script += '    print "Matlab job submitted on %s nodes for %s hour(s)." \n\n' % (options.nodes,options.time)
+    #script += '    cd_to_run = "cd %s"\n' % (options.direc)
+    #script += '    os.system(cd_to_run)\n'
+
+    script += '    runjob = \'matlab -nodisplay -nodesktop -nosplash -r "mainTuring %s"\' \n\n' % (options.params)
+ 
+    script += "    os.system(runjob) \n \n"
+
+    script += '    sys.exit(0) \n \n'
+
+    script += 'if __name__ == "__main__": \n'
+    script += '    main() \n'
+
+    runsdo.write(script)
+    runsdo.close()
+
+    chmod_py = "chmod 755 %s" % (job + ".py")
+    os.system(chmod_py)
+    
+def warning(message):
+    print "Warning: %s" % (message)
+    
+def error(message):
+    print "Error: %s" % (message)
+    sys.exit(1)
+
+if __name__ == "__main__":
+    main()
+

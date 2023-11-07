@@ -1,0 +1,10 @@
+#!/bin/bash
+module load matlab
+mkdir $6
+cp *.m $6 
+cp smatlab $6
+cd $6 
+chmod +x smatlab
+./smatlab -p short -t 24:00 -d $6 -N 1 -n 3 -m 32 -P "$1 $2 $3 $4 $5"
+
+####sbatch $7
